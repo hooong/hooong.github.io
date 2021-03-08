@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/%EB%8F%99%EC%9D%BC%ED%95%9C_%EB%A1%9C%EC%BB%AC_%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C_%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98_%EA%B9%83%ED%97%99_%EA%B3%84%EC%A0%95_%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94_%EB%B0%A9%EB%B2%95\/"
-        },"genre": "posts","keywords": "Git","wordCount":  355 ,
+        },"genre": "posts","keywords": "Git","wordCount":  363 ,
         "url": "http:\/\/example.org\/%EB%8F%99%EC%9D%BC%ED%95%9C_%EB%A1%9C%EC%BB%AC_%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C_%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98_%EA%B9%83%ED%97%99_%EA%B3%84%EC%A0%95_%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94_%EB%B0%A9%EB%B2%95\/","datePublished": "2021-03-08T23:20:18+09:00","dateModified": "2021-03-08T23:20:18+09:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -108,7 +108,7 @@
     <a href="/">Home </a>/ <a href="/"> [Git] 동일한 로컬 환경에서 여러개의 깃헙 계정 사용하는 방법 </a>
 </div>
             <h1 class="single-title animated flipInX">[Git] 동일한 로컬 환경에서 여러개의 깃헙 계정 사용하는 방법</h1><div class="post-meta">
-                <div class="post-meta-line">&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time class="timeago" datetime="2021-03-08">2021-03-08</time>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;355 words
+                <div class="post-meta-line">&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time class="timeago" datetime="2021-03-08">2021-03-08</time>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;363 words
                     &nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;2 minutes</div>
             </div>
         </div>
@@ -297,14 +297,18 @@ Hi <span class="o">{</span>GithubID<span class="o">}</span>! You<span class="err
 <li><code>git</code>의 global config가 설정되어있는 경우, 위와 같은 설정을 해주어야 해당 계정으로 푸시를 할 수 있음.</li>
 </ul>
 <h2 id="6-remote-설정">6. remote 설정</h2>
-<p>github에서 <code>git ssh</code>로 clone을 받을 수 있다. : <code>git@github.com:work/{프로젝트}.git</code></p>
+<p>github에서 <code>git ssh</code>로 clone을 받을 수 있다. : <code>git@github.com-work:work/{프로젝트}.git</code></p>
 <p>또는 이미 <code>remote</code>가 지정되어 있는 상태라면 아래 명령어를 통해 ssh로 바꿀 수 있다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git remote set-url origin git@github.com:work/<span class="o">{</span>프로젝트<span class="o">}</span>.git
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ git remote set-url origin git@<span class="o">{</span>Host<span class="o">}</span>:<span class="o">{</span>User<span class="o">}</span>/<span class="o">{</span>프로젝트<span class="o">}</span>.git
+
+ex. git remote set-url origin git@github.com-work:work/<span class="o">{</span>프로젝트<span class="o">}</span>.git
 </code></pre></td></tr></table>
 </div>
 </div><ul>
