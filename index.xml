@@ -19,12 +19,5 @@
     <author>hooong</author>
     <guid>http://example.org/docstring%EA%B3%BC_annotation/</guid>
     <description><![CDATA[<p>Python의 Docstring과 Annotation에 대한 정리</p>]]></description>
-</item><item>
-    <title>Test_post</title>
-    <link>http://example.org/test_post/</link>
-    <pubDate>Mon, 01 Mar 2021 17:30:15 &#43;0900</pubDate>
-    <author>hooong</author>
-    <guid>http://example.org/test_post/</guid>
-    <description><![CDATA[It&rsquo;s Test post!]]></description>
 </item></channel>
 </rss>
