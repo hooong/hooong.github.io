@@ -3,9 +3,16 @@
         <title>hooong&#39;s TIL</title>
         <link>http://example.org/</link>
         <description>This is TIL Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 08 Mar 2021 23:20:18 &#43;0900</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 05 Apr 2021 10:16:51 &#43;0900</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>[Python]Private (_, __)</title>
+    <link>http://example.org/python_private/</link>
+    <pubDate>Mon, 05 Apr 2021 10:16:51 &#43;0900</pubDate>
+    <author>hooong</author>
+    <guid>http://example.org/python_private/</guid>
+    <description><![CDATA[<p>Python에서 Private속성을 다루는 방법과 name mangling에 대한 정리</p>]]></description>
+</item><item>
     <title>[Git] 동일한 로컬 환경에서 여러개의 깃헙 계정 사용하는 방법</title>
     <link>http://example.org/%EB%8F%99%EC%9D%BC%ED%95%9C_%EB%A1%9C%EC%BB%AC_%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C_%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98_%EA%B9%83%ED%97%99_%EA%B3%84%EC%A0%95_%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94_%EB%B0%A9%EB%B2%95/</link>
     <pubDate>Mon, 08 Mar 2021 23:20:18 &#43;0900</pubDate>
@@ -19,5 +26,13 @@
     <author>hooong</author>
     <guid>http://example.org/docstring%EA%B3%BC_annotation/</guid>
     <description><![CDATA[<p>Python의 Docstring과 Annotation에 대한 정리</p>]]></description>
+</item><item>
+    <title></title>
+    <link>http://example.org/pythonprivate/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>hooong</author>
+    <guid>http://example.org/pythonprivate/</guid>
+    <description><![CDATA[Python의 private에 관하여 python은 java에서의 private처럼 객체 내부에서만 접근할 수 있는 &laquo;비공개&raquo; 인스턴스 변수는 존재하지 않는다. 그러나 변수명 앞에 _를 붙이는 규약을 통해 공개적이지 않은 부분으로 취급하는 규약이 있다. 이는 규약일 뿐, 얼마든지 해당 변수에 접근과 변경이 가능하다.
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  class Person: def __init__(self, name, age, weight): self.name = name self.age = age self.]]></description>
 </item></channel>
 </rss>

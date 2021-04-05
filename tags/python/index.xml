@@ -3,7 +3,14 @@
         <title>Python - Tag - hooong&#39;s TIL</title>
         <link>http://example.org/tags/python/</link>
         <description>Python - Tag - hooong&#39;s TIL</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 06 Mar 2021 21:50:13 &#43;0900</lastBuildDate><atom:link href="http://example.org/tags/python/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 05 Apr 2021 10:16:51 &#43;0900</lastBuildDate><atom:link href="http://example.org/tags/python/" rel="self" type="application/rss+xml" /><item>
+    <title>[Python]Private (_, __)</title>
+    <link>http://example.org/python_private/</link>
+    <pubDate>Mon, 05 Apr 2021 10:16:51 &#43;0900</pubDate>
+    <author>hooong</author>
+    <guid>http://example.org/python_private/</guid>
+    <description><![CDATA[<p>Python에서 Private속성을 다루는 방법과 name mangling에 대한 정리</p>]]></description>
+</item><item>
     <title>[Python]Docstring과Annotation</title>
     <link>http://example.org/docstring%EA%B3%BC_annotation/</link>
     <pubDate>Sat, 06 Mar 2021 21:50:13 &#43;0900</pubDate>
