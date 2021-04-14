@@ -127,9 +127,14 @@
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#_">_</a></li>
+    <li><a href="#__">__</a></li>
+  </ul>
+</nav></div>
             </div><p>Python에서 Private속성을 다루는 방법과 name mangling에 대한 정리</p>
-<h1 id="_">_</h1>
+<h2 id="_">_</h2>
 <p>python은 java에서의 private처럼 객체 내부에서만 접근할 수 있는 &laquo;비공개&raquo; 인스턴스 변수는 존재하지 않는다. 그러나 변수명 앞에 <code>_</code>를 붙이는 규약을 통해 공개적이지 않은 부분으로 취급하는 규약이 있다. 이는 규약일 뿐, 얼마든지 해당 변수에 접근과 변경이 가능하다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -177,7 +182,7 @@
 <span class="mi">80</span>
 </code></pre></td></tr></table>
 </div>
-</div><h1 id="__">__</h1>
+</div><h2 id="__">__</h2>
 <p>그런데 변수명 앞에 <code>__</code>를 붙이고 접근을 하면 AttributeError가 발생하는 것을 확인할 수 있다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -250,7 +255,7 @@
             <a class="nav-box" href="/%EB%8F%99%EC%9D%BC%ED%95%9C_%EB%A1%9C%EC%BB%AC_%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C_%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98_%EA%B9%83%ED%97%99_%EA%B3%84%EC%A0%95_%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94_%EB%B0%A9%EB%B2%95/"><span class="nav-icon"><svg aria-hidden="true" data-prefix="fas" data-icon="chevron-circle-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z"></path></svg></span><div style="text-align: right;padding-left: 10px"><div class="nav-text-h">Next article</div><span class="nav-text">[Git] 동일한 로컬 환경에서 여러개의 깃헙 계정 사용하는 방법</span></div></a>
         </div>
         <div class="post-nav-box nav-box-next">
-            <a class="nav-box" href="/python_property/"><div style="padding-right: 10px"><div class="nav-text-h">Next article</div><span class="nav-text">Python_property</span></div><span class="nav-icon"><svg aria-hidden="true" data-prefix="fas" data-icon="chevron-circle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z"></path></svg></span></a>
+            <a class="nav-box" href="/python_property/"><div style="padding-right: 10px"><div class="nav-text-h">Next article</div><span class="nav-text">[Python]property</span></div><span class="nav-icon"><svg aria-hidden="true" data-prefix="fas" data-icon="chevron-circle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z"></path></svg></span></a>
         </div></div></div>
 </div>
         </div>

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Python_property | </title><meta name="Description" content="Python의 Property"><meta property="og:title" content="Python_property" />
+        <title>[Python]property | </title><meta name="Description" content="Python의 Property"><meta property="og:title" content="[Python]property" />
 <meta property="og:description" content="Python의 Property" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/python_property/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
@@ -14,16 +14,16 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
-<meta name="twitter:title" content="Python_property"/>
+<meta name="twitter:title" content="[Python]property"/>
 <meta name="twitter:description" content="Python의 Property"/>
 <meta name="application-name" content="uBlogger">
 <meta name="apple-mobile-web-app-title" content="uBlogger"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/python_property/" /><link rel="prev" href="http://example.org/python_private/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/python_property/" /><link rel="prev" href="http://example.org/python_private/" /><link rel="next" href="http://example.org/git_switchrestore/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Python_property",
+        "headline": "[Python]property",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
@@ -105,9 +105,9 @@
 
             <div class="post-all-meta">
             <div class="breadcrumbs">
-    <a href="/">Home </a>/ <a href="/"> Python_property </a>
+    <a href="/">Home </a>/ <a href="/"> [Python]property </a>
 </div>
-            <h1 class="single-title animated flipInX">Python_property</h1><div class="post-meta">
+            <h1 class="single-title animated flipInX">[Python]property</h1><div class="post-meta">
                 <div class="post-meta-line">&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time class="timeago" datetime="2021-04-05">2021-04-05</time>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;396 words
                     &nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;2 minutes</div>
             </div>
@@ -129,15 +129,12 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#추가적인-프로퍼티-사용법">추가적인 프로퍼티 사용법</a></li>
-      </ul>
-    </li>
+    <li><a href="#property">Property</a></li>
+    <li><a href="#추가적인-프로퍼티-사용법">추가적인 프로퍼티 사용법</a></li>
   </ul>
 </nav></div>
             </div><p>Python에서 prooperty에 대한 정리</p>
-<h1 id="property">Property</h1>
+<h2 id="property">Property</h2>
 <p>이 글은 <code>파이썬 클린코드</code> 책의 내용을 정리한 글입니다.</p>
 <p>프로퍼티는 객체의 어떤 속성에 대한 접근을 제어하려는 경우 사용한다. 이렇게 하는게 또한 파이썬스러운 코드라고 한다. 프로퍼티는 자바에서의 접근메서드인 getter와 setter를 만드는 것과 같은 용도라고 할 수 있다.</p>
 <div class="highlight"><div class="chroma">
@@ -222,16 +219,14 @@
 <li><code>@email.deleter</code>가 붙은 메서드는 <code>email</code> 속성을 <code>None</code>로 초기화한다.</li>
 </ul>
 <p>프로퍼티를 사용하면 명령-쿼리 분리 원칙(command and query separation)을 따르기 위한 좋은 방법이다.</p>
-<blockquote>
 <p>명령-쿼리 분리 원칙이란?</p>
 <ul>
 <li>객체의 메서드가 무언가의 상태를 변경하는 커맨드이거나 무언가의 값을 반환하는 쿼리이거나 둘 중에 하나만 수행해야지 둘 다 동시에 수행하면 안된다는 것</li>
 </ul>
-</blockquote>
 <p>즉, 프로퍼티를 명령-쿼리로 나누어보면 <code>@property</code> 데코레이터는 무언가에 응답하기 위한 쿼리이고, <code>@&lt;property_name&gt;.setter</code>, <code>@&lt;property_name&gt;.deleter</code>데코레이터는 무언가를 하기 위한 커맨드이다.</p>
 <p>또한, 책에서 덧붙이는 팁은 <code>메서드는 한 가지만 수행해야 한다. 작업을 처리한 다음 상태를 확인하려면 메서드를 분리해야 한다.</code> 이다.  예를들어  <code>if self.set_email(&quot;a@j.com&quot;)</code>처럼 코드를 사용하게 되면 이메일을 설정하려는 건지, 이미 이메일이 해당 값으로 설정되어 있는지 확인하려는지, 아니면 동시에 이메일 값을 설정하고 상태가 유효한지 체크하는 것인지를 구분하기 어렵기때문이다.</p>
 <hr>
-<h3 id="추가적인-프로퍼티-사용법">추가적인 프로퍼티 사용법</h3>
+<h2 id="추가적인-프로퍼티-사용법">추가적인 프로퍼티 사용법</h2>
 <p>위의 프로퍼티는 데코레이터를 사용한 방법이고 아래는 <code>property</code> class를 직접적으로 사용한 예제이다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -332,6 +327,9 @@
     </div>
 </div><div class="post-footer" id="post-footer"><div class="post-navigation"><div class="post-nav-box nav-box-prev">
             <a class="nav-box" href="/python_private/"><span class="nav-icon"><svg aria-hidden="true" data-prefix="fas" data-icon="chevron-circle-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z"></path></svg></span><div style="text-align: right;padding-left: 10px"><div class="nav-text-h">Next article</div><span class="nav-text">[Python]Private (_, __)</span></div></a>
+        </div>
+        <div class="post-nav-box nav-box-next">
+            <a class="nav-box" href="/git_switchrestore/"><div style="padding-right: 10px"><div class="nav-text-h">Next article</div><span class="nav-text">[Git]switch &#43; restore (= checkout?)</span></div><span class="nav-icon"><svg aria-hidden="true" data-prefix="fas" data-icon="chevron-circle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z"></path></svg></span></a>
         </div></div></div>
 </div>
         </div>

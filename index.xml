@@ -3,10 +3,17 @@
         <title>hooong&#39;s TIL</title>
         <link>http://example.org/</link>
         <description>This is TIL Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 05 Apr 2021 10:23:11 &#43;0900</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Apr 2021 22:14:15 &#43;0900</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>Python_property</title>
+    <title>[Git]switch &#43; restore (= checkout?)</title>
+    <link>http://example.org/git_switchrestore/</link>
+    <pubDate>Wed, 14 Apr 2021 22:14:15 &#43;0900</pubDate>
+    <author>hooong</author>
+    <guid>http://example.org/git_switchrestore/</guid>
+    <description><![CDATA[<p>Git의 switch와 restore에 대하여&hellip;</p>]]></description>
+</item><item>
+    <title>[Python]property</title>
     <link>http://example.org/python_property/</link>
     <pubDate>Mon, 05 Apr 2021 10:23:11 &#43;0900</pubDate>
     <author>hooong</author>
