@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Python 3.6부터는 Dict가 순서를 기억한다. | </title><meta name="Description" content="입력된 순서를 보장하는 딕셔너리에 대한 정리"><meta property="og:title" content="Python 3.6부터는 Dict가 순서를 기억한다." />
+<meta property="og:description" content="입력된 순서를 보장하는 딕셔너리에 대한 정리" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/python_dictionary_order/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-12T22:43:20&#43;09:00" />
+<meta property="article:modified_time" content="2021-05-12T22:43:20&#43;09:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Python 3.6부터는 Dict가 순서를 기억한다."/>
+<meta name="twitter:description" content="입력된 순서를 보장하는 딕셔너리에 대한 정리"/>
+<meta name="application-name" content="uBlogger">
+<meta name="apple-mobile-web-app-title" content="uBlogger"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/python_dictionary_order/" /><link rel="prev" href="http://example.org/git_switchrestore/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Python 3.6부터는 Dict가 순서를 기억한다.",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/python_dictionary_order\/"
+        },"genre": "posts","keywords": "Python","wordCount":  706 ,
+        "url": "http:\/\/example.org\/python_dictionary_order\/","datePublished": "2021-05-12T22:43:20+09:00","dateModified": "2021-05-12T22:43:20+09:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "hooong"
+            },"description": "입력된 순서를 보장하는 딕셔너리에 대한 정리"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="hooong&#39;s TIL" class="header-logo"><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="hooong&#39;s  TIL"> Posts </a><a class="menu-item" href="/tags/" title="hooong&#39;s  TIL"> Tags </a><a class="menu-item" href="/categories/" title="hooong&#39;s  TIL"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="hooong&#39;s TIL" class="header-logo"><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="hooong&#39;s  TIL">Posts</a><a class="menu-item" href="/tags/" title="hooong&#39;s  TIL">Tags</a><a class="menu-item" href="/categories/" title="hooong&#39;s  TIL">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main"><div class="container content-article page-toc theme-classic"><div class="toc" id="toc-auto">
+            <div class="toc-title">Contents</div>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><div class="header-post">
+        <div class="post-title">
+
+            <div class="post-all-meta">
+            <div class="breadcrumbs">
+    <a href="/">Home </a>/ <a href="/"> Python 3.6부터는 Dict가 순서를 기억한다. </a>
+</div>
+            <h1 class="single-title animated flipInX">Python 3.6부터는 Dict가 순서를 기억한다.</h1><div class="post-meta">
+                <div class="post-meta-line">&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time class="timeago" datetime="2021-05-12">2021-05-12</time>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;706 words
+                    &nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;4 minutes</div>
+            </div>
+        </div>
+
+
+    </div>
+
+    </div>
+
+        <article class="single toc-start">
+
+        <div class="content-block content-block-first content-block-position">
+
+        <div class="post"><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#dictionary란">Dictionary란?</a></li>
+    <li><a href="#ordereddict란">OrderedDict란?</a></li>
+    <li><a href="#python-36-이후-dict에-순서가-생긴-이유">Python 3.6 이후 Dict에 순서가 생긴 이유</a></li>
+    <li><a href="#배열의-개수가-늘었는데-메모리의-사용량이-줄었다">배열의 개수가 늘었는데 메모리의 사용량이 줄었다?</a></li>
+    <li><a href="#결론">결론</a></li>
+  </ul>
+</nav></div>
+            </div><p>입력된 순서를 보장하는 딕셔너리에 대한 정리</p>
+<p>딕셔너리에 구현되어 있는 함수들 중 <code>pop()</code>과 <code>popitem()</code>이 있는 것을 보고 &ldquo;딕셔너리에는 순서가 없는 것으로 알고있었는데 어떻게 큐에서나 사용되는 pop()이 구현될 수 있지?&ldquo;라는 의문으로 찾아보게 되었던 결과를 글로 옮겨 적어보게 되었습니다.</p>
+<h2 id="dictionary란">Dictionary란?</h2>
+<p><code>이름 - 홍길동</code>, <code>성별 - 남</code> 과 같이 대응 관계를 나타내는 자료형을 연관 배열 또는 해시라고 하는데 Python에서는 이러한 자료형을 딕셔너리라고 합니다.</p>
+<p>딕셔너리는 <code>key: value</code> 쌍의 형식으로 저장되는 자료형이며 특정 key는 해시가 가능한 값으로 해시된 key값을 이용해 value와 매핑을 하게 됩니다. 즉, key로 리스트, 딕셔너리와 같이 mutable한 객체는 사용할 수 없습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># dict의 예시</span>
+<span class="n">people</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;홍길동&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="s1">&#39;22&#39;</span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>key를 해시하여 value에 매핑하는 구조이기 때문에 리스트나 튜플처럼 순차적으로 값에 접근하지 않고 key를 통해 바로 value에 접근을 할 수 있습니다. 이 때문에 Python 3.5 까지는 딕셔너리는 순서를 가지고 있지 않았습니다.</p>
+<h2 id="ordereddict란">OrderedDict란?</h2>
+<p>OrderedDict는 일반적인 딕셔너리(Python 3.6이전)와는 다르게 입력된 순서를 저장하여 순서를 보장해주는 Python이 제공하는 자료형입니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 입력된 순서가 보장되는 OrderedDict</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">od</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">od</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">od</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">od</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">od</span>
+<span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+
+<span class="c1"># Python 3.5 이전에서의 dict는 입력된 순서가 보장되지 않음.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+
+<span class="c1"># Python 3.6 이후에서의 dict는 입력된 순서 보장</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d_</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d_</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d_</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d_</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d_</span>
+<span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>그러나 Python 3.6이후부터는 기존 딕셔너리도 입력된 순서를 가지게 되어 OrderedDict와 크게 차이점이 없다고 생각을 할 수 있습니다. 하지만 동등성을 확인할 때에 OrderedDict는 순서까지도 동등한지를 확인하게 되어 더 엄격하게 동등성을 검증합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 입력 순서가 다른 dict의 비교</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dict_a</span>
+<span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">:</span> <span class="s1">&#39;pineapple&#39;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dict_b</span>
+<span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">:</span> <span class="s1">&#39;pineapple&#39;</span><span class="p">}</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dict_a</span> <span class="o">==</span> <span class="n">dict_b</span>
+<span class="bp">True</span>
+
+<span class="c1"># 입력 순서가 다른 OrderedDict의 비교</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ordered_a</span>
+<span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;pineapple&#39;</span><span class="p">)])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ordered_b</span>
+<span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;pineapple&#39;</span><span class="p">)])</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ordered_a</span> <span class="o">==</span> <span class="n">ordered_b</span>
+<span class="bp">False</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>따라서 데이터의 순서가 아주 중요한 상황이나 하위 호환성을 고려해야 할때에는 OrderedDict를 사용하여 순서를 보장하는 것도 고려해야 합니다.</p>
+<h2 id="python-36-이후-dict에-순서가-생긴-이유">Python 3.6 이후 Dict에 순서가 생긴 이유</h2>
+<p>Python에서 딕셔너리를 구현함에 있어 <a href="https://github.com/python/cpython/blob/474ef63e38726d4bcde14f6104984a742c6cb747/Objects/dictobject.c#L375" target="_blank" rel="noopener noreffer"><code>USABLE_FRACTION</code>을 계산하게 되는데 성능상의 문제로 <code>2/3 * dk_size</code>를 넘지못하는데</a> Python 3.5 이하 버전에서 딕셔너리를 구현하기 위해 PyDictKeyEntry 타입의 희소배열(빈 공간도 여전히 PyDictKeyEntry만큼의 크기를 가짐.)을 사용하고 이 배열의 크기를 dk_size로 저장하게 되는데, 이 때문에 메모리의 사용량이 컸는데, 이를 Python 3.6에서는 3.5에서와 다르게 두 개의 배열을 사용하여 메모리의 사용량을 줄일 수 있게 됩니다.</p>
+<ul>
+<li>참고 : Python 3.6에서부터 순서가 생기는 구조로 변경이 된 것 같은데 Python의 레퍼런스 문서에서는 Python 3.7부터 지원한다고 써있는거 보니 3.7에서부터 공식으로 지원을 하는 것 같습니다.</li>
+</ul>
+<h2 id="배열의-개수가-늘었는데-메모리의-사용량이-줄었다">배열의 개수가 늘었는데 메모리의 사용량이 줄었다?</h2>
+<p>위에서 두 개의 배열을 사용하여 메모리를 줄였다고 하는데 배열이 하나에서 두 개로 늘었는데 줄었다고하면 의문을 가질수도 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Python 3.5 </span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;timmy&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;barry&#39;</span><span class="p">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;guido&#39;</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">}</span>
+<span class="n">entries</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">],</span>
+           <span class="p">[</span><span class="o">-</span><span class="mi">8522787127447073495</span><span class="p">,</span> <span class="s1">&#39;barry&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">],</span>
+           <span class="p">[</span><span class="o">-</span><span class="mi">9092791511155847987</span><span class="p">,</span> <span class="s1">&#39;timmy&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">],</span>
+           <span class="p">[</span><span class="o">-</span><span class="mi">6480567542315338377</span><span class="p">,</span> <span class="s1">&#39;guido&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Python 3.6</span>
+<span class="n">indices</span> <span class="o">=</span>  <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">entries</span> <span class="o">=</span>  <span class="p">[[</span><span class="o">-</span><span class="mi">9092791511155847987</span><span class="p">,</span> <span class="s1">&#39;timmy&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mi">8522787127447073495</span><span class="p">,</span> <span class="s1">&#39;barry&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mi">6480567542315338377</span><span class="p">,</span> <span class="s1">&#39;guido&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]]</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>하지만 위의 두 버전에서 각기 다른 구현된 딕셔너리를 살펴보면 이해를 할 수 있습니다.</p>
+<p>앞서 설명하였듯이 Python 3.5에서는 <code>entries</code>라는 빈 공간도 PyDictKeyEntry라는 타입으로 채워진 하나의 배열을 사용해 key를 해시하여 얻은 값을 인덱스로 사용하여 저장하였다면, Python 3.6에서는 key와 매핑될 객체를 추가해나가는 <code>entries</code>와 key를 해시하여 얻은 값에 해당하는 위치에 담기는 순서를 저장하는  <code>indices</code>, 총 2개의 배열을 사용하면서 <code>indices</code>는 int 타입의 희소배열을 사용하게 되고 PyDictKeyEntry는 딕셔너리에 담긴 객체의 개수만큼만 크기를 차지하게 되어 메모리를 Python 3.5에서보다 절약이 될 수 있다고 합니다. 또, 이 글을 쓰게 된 이유인 순서를 저장하는 이유가 바로  <code>indices</code>에서 나오게 됩니다.</p>
+<h2 id="결론">결론</h2>
+<p>이렇게 Dict, OrderedDict에 대해서 간단히 알아보고 Python 3.5와 3.6에서 딕셔너리의 구현되어 있는 구조를 알아보면서 딕셔너리에 입력 순서가 저장되는 이유에 대해서 알아보았습니다. Python 3.6이후부터 딕셔너리에 순서가 생기기는 했지만, OrderedDict 부분에서 살펴본대로 동등성을 비교하는 부분이 다르고 하위호환을 고려한다면 용도에 맞게 사용하는 것이 좋을 것 같습니다.</p>
+<br>
+<hr>
+<ul>
+<li>참고 사이트
+<ul>
+<li><a href="https://docs.python.org/ko/3/library/stdtypes.html#dict">https://docs.python.org/ko/3/library/stdtypes.html#dict</a></li>
+<li><a href="https://docs.python.org/3/library/collections.html#collections.OrderedDict">https://docs.python.org/3/library/collections.html#collections.OrderedDict</a></li>
+<li><a href="https://stackoverflow.com/questions/39980323/are-dictionaries-ordered-in-python-3-6/39980744#39980744">https://stackoverflow.com/questions/39980323/are-dictionaries-ordered-in-python-3-6/39980744#39980744</a></li>
+</ul>
+</li>
+</ul></div>
+
+            <div class="post"><div class="post-info-share">
+    <span></span>
+</div>
+<div class="footer-post-author"style="border-radius: 10px;border-bottom: solid 2px #ececec">
+    <div class="author-avatar"><a href="" target="_blank"><img alt="" src="https://user-images.githubusercontent.com/78338337/110209403-b9795a00-7ecf-11eb-9bc5-d8d7edb21197.jpeg" border="0"></a></div>
+    <div class="author-info">
+        <div class="name"><a href="" target="_blank">SeokJun Hong</a></div>
+        <div class="number-posts">The Journey is The Reward.</span></div>
+    </div>
+</div><div class="post-footer" id="post-footer"><div class="post-navigation"><div class="post-nav-box nav-box-prev">
+            <a class="nav-box" href="/git_switchrestore/"><span class="nav-icon"><svg aria-hidden="true" data-prefix="fas" data-icon="chevron-circle-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z"></path></svg></span><div style="text-align: right;padding-left: 10px"><div class="nav-text-h">Next article</div><span class="nav-text">[Git]switch &#43; restore (= checkout?)</span></div></a>
+        </div></div></div>
+</div>
+        </div>
+    <div id="toc-final"></div>
+    </article><div class=" post-tags post-tags-toc "><a href="/tags/python/" class="tag">Python</a></div></div></main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span>2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">hooong</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/twemoji/twemoji.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/auto-render.min.js"></script><script src="/lib/katex/copy-tex.min.js"></script><script src="/lib/katex/mhchem.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"data":{"id-1":"hooong's TIL","id-2":"hooong's TIL"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true,"typeit":{"cursorChar":"/","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js"></script><script src="/js/jquery-3.5.1.min.js"></script></body>
+</html>
