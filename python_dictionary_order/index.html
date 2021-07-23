@@ -16,10 +16,8 @@
 
 <meta name="twitter:title" content="Python 3.6부터는 Dict가 순서를 기억한다."/>
 <meta name="twitter:description" content="입력된 순서를 보장하는 딕셔너리에 대한 정리"/>
-<meta name="application-name" content="uBlogger">
-<meta name="apple-mobile-web-app-title" content="uBlogger"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://hooong.github.io/python_dictionary_order/" /><link rel="prev" href="https://hooong.github.io/git_switchrestore/" /><link rel="next" href="https://hooong.github.io/docker_container%EC%97%90%EC%84%9Chost%EB%A1%9C%EC%A0%91%EA%B7%BC%ED%95%98%EB%8A%94%EB%B0%A9%EB%B2%95/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+<meta name="application-name" content="hooong&#39;sTIL">
+<meta name="apple-mobile-web-app-title" content="hooong&#39;sTIL"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar_favi.ico" type="image/x-icon"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://hooong.github.io/python_dictionary_order/" /><link rel="prev" href="https://hooong.github.io/git_switchrestore/" /><link rel="next" href="https://hooong.github.io/docker_container%EC%97%90%EC%84%9Chost%EB%A1%9C%EC%A0%91%EA%B7%BC%ED%95%98%EB%8A%94%EB%B0%A9%EB%B2%95/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -28,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/hooong.github.io\/python_dictionary_order\/"
-        },"genre": "posts","keywords": "Python","wordCount":  706 ,
+        },"genre": "posts","keywords": "Python","wordCount":  806 ,
         "url": "https:\/\/hooong.github.io\/python_dictionary_order\/","datePublished": "2021-05-12T22:43:20+09:00","dateModified": "2021-05-12T22:43:20+09:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -108,7 +106,7 @@
     <a href="/">Home </a>/ <a href="/"> Python 3.6부터는 Dict가 순서를 기억한다. </a>
 </div>
             <h1 class="single-title animated flipInX">Python 3.6부터는 Dict가 순서를 기억한다.</h1><div class="post-meta">
-                <div class="post-meta-line">&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time class="timeago" datetime="2021-05-12">2021-05-12</time>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;706 words
+                <div class="post-meta-line">&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time class="timeago" datetime="2021-05-12">2021-05-12</time>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;806 words
                     &nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;4 minutes</div>
             </div>
         </div>
@@ -129,31 +127,42 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#dictionary란">Dictionary란?</a></li>
-    <li><a href="#ordereddict란">OrderedDict란?</a></li>
-    <li><a href="#python-36-이후-dict에-순서가-생긴-이유">Python 3.6 이후 Dict에 순서가 생긴 이유</a></li>
+    <li><a href="#딕셔너리란">딕셔너리란?</a></li>
+    <li><a href="#python36부터는-딕셔너리가-어떻게-순서를-저장하는가">Python3.6부터는 딕셔너리가 어떻게 순서를 저장하는가?</a></li>
     <li><a href="#배열의-개수가-늘었는데-메모리의-사용량이-줄었다">배열의 개수가 늘었는데 메모리의 사용량이 줄었다?</a></li>
+    <li><a href="#ordereddict란">OrderedDict란?</a></li>
     <li><a href="#결론">결론</a></li>
   </ul>
 </nav></div>
-            </div><p>입력된 순서를 보장하는 딕셔너리에 대한 정리</p>
-<p>딕셔너리에 구현되어 있는 함수들 중 <code>pop()</code>과 <code>popitem()</code>이 있는 것을 보고 &ldquo;딕셔너리에는 순서가 없는 것으로 알고있었는데 어떻게 큐에서나 사용되는 pop()이 구현될 수 있지?&ldquo;라는 의문으로 찾아보게 되었던 결과를 글로 옮겨 적어보게 되었습니다.</p>
-<h2 id="dictionary란">Dictionary란?</h2>
-<p><code>이름 - 홍길동</code>, <code>성별 - 남</code> 과 같이 대응 관계를 나타내는 자료형을 연관 배열 또는 해시라고 하는데 Python에서는 이러한 자료형을 딕셔너리라고 합니다.</p>
-<p>딕셔너리는 <code>key: value</code> 쌍의 형식으로 저장되는 자료형이며 특정 key는 해시가 가능한 값으로 해시된 key값을 이용해 value와 매핑을 하게 됩니다. 즉, key로 리스트, 딕셔너리와 같이 mutable한 객체는 사용할 수 없습니다.</p>
+            </div><p>딕셔너리에 구현되어 있는 함수들 중 <code>pop()</code>과 <code>popitem()</code>이 있는 것을 보고 &ldquo;딕셔너리에는 순서가 없는 것으로 알고있었는데 어떻게 큐에서나 사용되는 pop()이 구현될 수 있지?&ldquo;라는 의문으로 찾아보게 되었던 결과를 글로 옮겨 적어보게 되었습니다.</p>
+<h2 id="딕셔너리란">딕셔너리란?</h2>
+<p>딕셔너리는 사전이라는 의미를 가지는 단어로 Python에서는 사전형 데이터를 담는 자료형을 뜻합니다.</p>
+<p>사전형 데이터란 다른 말로 연관 배열이라고도 할 수 있습니다. 연관 배열은 키 하나와 값 하나가 연관되어 키를 통해 연관된 값을 얻을 수 있습니다. 실제로 국어사전을 통해 원하는 단어를 찾아 그에 연관된 단어의 뜻을 찾아보는 것을 생각해보면 쉽게 이해할 수 있습니다.</p>
+<p>앞서 말한대로 딕셔너리는 하나의 키와 하나의 값을 가지며  <code>{key: value}</code>  형식으로 저장됩니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># dict의 예시</span>
-<span class="n">people</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;홍길동&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="s1">&#39;22&#39;</span><span class="p">}</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 딕셔너리 예시</span>
+<span class="n">people</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;홍길동&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+
+<span class="n">people</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="s1">&#39;홍길동&#39;</span>
+<span class="n">people</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="mi">20</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>key를 해시하여 value에 매핑하는 구조이기 때문에 리스트나 튜플처럼 순차적으로 값에 접근하지 않고 key를 통해 바로 value에 접근을 할 수 있습니다. 이 때문에 Python 3.5 까지는 딕셔너리는 순서를 가지고 있지 않았습니다.</p>
-<h2 id="ordereddict란">OrderedDict란?</h2>
-<p>OrderedDict는 일반적인 딕셔너리(Python 3.6이전)와는 다르게 입력된 순서를 저장하여 순서를 보장해주는 Python이 제공하는 자료형입니다.</p>
+</div><p>키는 해시가 가능한 값으로 해시된 키를 이용해 값과 매핑하여 연관된 값을 저장하거나 얻어올 수 있습니다. 따라서 리스트, 딕셔너리와 같이 mutable한 객체는 해시가 불가능하여 딕셔너리의 키로는 사용할 수 없습니다.</p>
+<p>또한, 리스트나 튜플처럼 순차적으로 값에 접근하는 것과 달리 딕셔너리는 해시된 키를 통해 바로 값에 접근이 가능하므로 입력된 순서를 저장할 필요성이 없었으며 실제로 Python3.5까지는 딕셔너리는 입력 순서를 저장하지 않습니다. 하지만 Python3.6부터는 딕셔너리를 구현하는 내부구조의 변경으로 인해 입력 순서를 저장하게 됩니다.</p>
+<h2 id="python36부터는-딕셔너리가-어떻게-순서를-저장하는가">Python3.6부터는 딕셔너리가 어떻게 순서를 저장하는가?</h2>
+<p>우선 아래의 예시를 통해 Python3.5와 Python3.6에서 딕셔너리가 입력된 순서를 저장하는지부터 확인해보겠습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -172,45 +181,87 @@
 </span><span class="lnt">14
 </span><span class="lnt">15
 </span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 입력된 순서가 보장되는 OrderedDict</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">od</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">od</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">od</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">od</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># [Python3.5] 입력된 순서가 보장되지 않음.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dict_3_5</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dict_3_5</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ddict_3_5</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dict_3_5</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">od</span>
-<span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
-
-<span class="c1"># Python 3.5 이전에서의 dict는 입력된 순서가 보장되지 않음.</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dict_3_5</span>
 <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
 
-<span class="c1"># Python 3.6 이후에서의 dict는 입력된 순서 보장</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d_</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d_</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d_</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d_</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d_</span>
+<span class="c1"># [Python3.6] 입력된 순서가 보장됨.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dict_3_6</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dict_3_6</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dict_3_6</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dict_3_6</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dict_3_6</span>
 <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>그러나 Python 3.6이후부터는 기존 딕셔너리도 입력된 순서를 가지게 되어 OrderedDict와 크게 차이점이 없다고 생각을 할 수 있습니다. 하지만 동등성을 확인할 때에 OrderedDict는 순서까지도 동등한지를 확인하게 되어 더 엄격하게 동등성을 검증합니다.</p>
+</div><p>살펴본 바와 같이 Python3.6에서 딕셔너리가 어떻게 순서를 저장하는지를 알기 위해서는 Python3.6 이전과 이후의 딕셔너리 내부 구조에 대하여 살펴볼 필요가 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">people</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;firstname&#39;</span><span class="p">:</span> <span class="s1">&#39;길동&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;lastname&#39;</span><span class="p">:</span> <span class="s1">&#39;홍&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;job&#39;</span><span class="p">:</span> <span class="s1">&#39;개발자&#39;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>위 처럼  <code>people</code>이라는 딕셔너리 객체가 있을 때, Python3.6이전과 이후의 구조를 살펴보면 다음과 같습니다.</p>
+<ul>
+<li>Python3.6 이전의 딕셔너리 구조</li>
+</ul>
+<img width="515" alt="스크린샷 2021-07-10 오후 10 38 37" src="https://user-images.githubusercontent.com/78338337/125164912-9806e280-e1cf-11eb-9432-bb7d6ce9c087.png">
+<p>Python3.6 이전에는 <code>dk_size</code>크기(<code>dk_size</code>는 해시테이블의 크기로 여기서는 8이다.)만큼의 <code>entries</code>라는 해시 테이블을 생성하고 해싱된 key값에 해당하는 인덱스 위치로 엔트리가 저장됩니다. 따라서 <code>hash('firstname') % 8</code>을 통해 바로 엔트리에 접근이 가능합니다.</p>
+<img width="569" alt="스크린샷 2021-07-10 오후 10 59 29" src="https://user-images.githubusercontent.com/78338337/125165575-7f4bfc00-e1d2-11eb-8e75-3f3838b3c76e.png">
+<p>반면, Python3.6 이후부터는 <code>dk_size</code>크기의 <code>indices</code>라는 해시 테이블을 두고 해싱된 key값에 해당하는 위치에 <code>entries</code>에 삽입될 위치의 인덱스를 저장하고 엔트리가 삽입될때마다 <code>entries</code> 배열에 삽입된 순서대로 삽입이 되는 구조로 바뀌었습니다. 즉, 순서를 저장할 수 있게되었습니다. 따라서 <code>hash('firstname') % 8</code>의 결과값을 가지고 <code>indices</code>에서 <code>entries</code>에 접근할 수 있는 인덱스를 얻은 뒤 <code>entries[0]</code>으로 접근이 가능하게 됩니다.</p>
+<ul>
+<li>참고로 Python 3.6에서부터 순서가 생기는 구조로 변경이 된 것 같은데 Python의 레퍼런스 문서에서는 Python 3.7부터 지원한다고 써있는거 보니 3.7부터 공식으로 지원을 하는 것 같습니다.</li>
+</ul>
+<h2 id="배열의-개수가-늘었는데-메모리의-사용량이-줄었다">배열의 개수가 늘었는데 메모리의 사용량이 줄었다?</h2>
+<p>Python3.6 버전으로 오면서 딕셔너리를 구현하기 위해 사용하는 배열이 하나에서 두 개로 늘어났는데 메모리가 줄었다고하면 의문을 가질수도 있습니다. 결론부터 말하자면, 해시 테이블로 사용하는 희소배열의 타입을 바꿔 빈 공간에 대한 메모리를 줄일 수 있게 됩니다.</p>
+<p>좀 더 자세히 살펴보면 Python3.6 이전 버전에서는 사이즈가 <code>dk_size</code>인  <code>PyDictKeyEntry</code> 타입의 <code>entries</code> 해시 테이블을 사용합니다. 따라서, 배열의 빈 공간마저 <code>PyDictKeyEntry</code>만큼의 메모리를 차지하여 낭비하는 부분이 컸습니다. 그러나 변경된 Python3.6 이후 버전에서는 사이즈가 <code>dk_size</code>인 <code>char</code>타입의 <code>indices</code>라는 해시 테이블과 <code>PyDictKeyEntry</code>를 담는 <code>entries</code>는 필요할때마다 할당되어 추가되어 Python3.6 이전 버전보다는 메모리를 효율적으로 사용할 수 있다고합니다.</p>
+<img width="950" alt="스크린샷 2021-07-11 오전 1 44 38" src="https://user-images.githubusercontent.com/78338337/125170321-92b69180-e1e9-11eb-92b4-b64c03f680fb.png">
+<p>위의 <code>people</code> 딕셔너리 객체를 가지고 계산을 해보면 다음과 같습니다.</p>
+<p>Python3.6 이전 버전의 경우 <code>8(dk_size) * 8 * 3</code>로 192 Bytes를 차지하게 되는 반면, Python3.6 이후 버전의 경우에는 <code>8(dk_size) * 1 + (8 * 3 * 3)</code>로 80 Bytes를 차지는 것을 확인해 볼 수 있습니다.</p>
+<h2 id="ordereddict란">OrderedDict란?</h2>
+<p>사실 Python에는 3.6버전 이전부터 입력된 순서를 보장하는 특수한 딕셔너리 자료형을 가지고 있습니다. 그것이 바로 OrderedDict입니다.</p>
+<p>OrderedDict는 앞에서 말한바와 같이 순서를 보장하는 딕셔너리로 아래 예제를 통해 순서가 보장된다는 것을 확인해 볼 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 입력된 순서가 보장되는 OrderedDict</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">odered_dict</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">odered_dict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">odered_dict</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">odered_dict</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">odered_dict</span>
+<span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Python 3.6이후부터는 기존 딕셔너리도 입력된 순서를 가지게 되어 OrderedDict와 크게 차이점이 없다고 생각을 할 수 있습니다. 하지만 동등성을 확인할 때에 OrderedDict는 순서까지도 동등한지를 확인하게 되어 더 엄격하게 동등성을 검증합니다.</p>
+<p>입력 순서는 다르지만 내용이 같은 경우에 서로 비교하는 예시를 아래에서 살펴볼 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -232,7 +283,7 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 입력 순서가 다른 dict의 비교</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 기본 딕셔너리</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">dict_a</span>
 <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">:</span> <span class="s1">&#39;pineapple&#39;</span><span class="p">}</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">dict_b</span>
@@ -241,7 +292,7 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">dict_a</span> <span class="o">==</span> <span class="n">dict_b</span>
 <span class="bp">True</span>
 
-<span class="c1"># 입력 순서가 다른 OrderedDict의 비교</span>
+<span class="c1"># OrderedDict</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">ordered_a</span>
 <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;pineapple&#39;</span><span class="p">)])</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">ordered_b</span>
@@ -251,66 +302,28 @@
 <span class="bp">False</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>따라서 데이터의 순서가 아주 중요한 상황이나 하위 호환성을 고려해야 할때에는 OrderedDict를 사용하여 순서를 보장하는 것도 고려해야 합니다.</p>
-<h2 id="python-36-이후-dict에-순서가-생긴-이유">Python 3.6 이후 Dict에 순서가 생긴 이유</h2>
-<p>Python에서 딕셔너리를 구현함에 있어 <a href="https://github.com/python/cpython/blob/474ef63e38726d4bcde14f6104984a742c6cb747/Objects/dictobject.c#L375" target="_blank" rel="noopener noreffer"><code>USABLE_FRACTION</code>을 계산하게 되는데 성능상의 문제로 <code>2/3 * dk_size</code>를 넘지못하는데</a> Python 3.5 이하 버전에서 딕셔너리를 구현하기 위해 PyDictKeyEntry 타입의 희소배열(빈 공간도 여전히 PyDictKeyEntry만큼의 크기를 가짐.)을 사용하고 이 배열의 크기를 dk_size로 저장하게 되는데, 이 때문에 메모리의 사용량이 컸는데, 이를 Python 3.6에서는 3.5에서와 다르게 두 개의 배열을 사용하여 메모리의 사용량을 줄일 수 있게 됩니다.</p>
-<ul>
-<li>참고 : Python 3.6에서부터 순서가 생기는 구조로 변경이 된 것 같은데 Python의 레퍼런스 문서에서는 Python 3.7부터 지원한다고 써있는거 보니 3.7에서부터 공식으로 지원을 하는 것 같습니다.</li>
-</ul>
-<h2 id="배열의-개수가-늘었는데-메모리의-사용량이-줄었다">배열의 개수가 늘었는데 메모리의 사용량이 줄었다?</h2>
-<p>위에서 두 개의 배열을 사용하여 메모리를 줄였다고 하는데 배열이 하나에서 두 개로 늘었는데 줄었다고하면 의문을 가질수도 있습니다.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Python 3.5 </span>
-<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;timmy&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;barry&#39;</span><span class="p">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;guido&#39;</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">}</span>
-<span class="n">entries</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">],</span>
-           <span class="p">[</span><span class="o">-</span><span class="mi">8522787127447073495</span><span class="p">,</span> <span class="s1">&#39;barry&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">],</span>
-           <span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">],</span>
-           <span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">],</span>
-           <span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">],</span>
-           <span class="p">[</span><span class="o">-</span><span class="mi">9092791511155847987</span><span class="p">,</span> <span class="s1">&#39;timmy&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">],</span>
-           <span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">],</span>
-           <span class="p">[</span><span class="o">-</span><span class="mi">6480567542315338377</span><span class="p">,</span> <span class="s1">&#39;guido&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]]</span>
-
-<span class="c1"># Python 3.6</span>
-<span class="n">indices</span> <span class="o">=</span>  <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">entries</span> <span class="o">=</span>  <span class="p">[[</span><span class="o">-</span><span class="mi">9092791511155847987</span><span class="p">,</span> <span class="s1">&#39;timmy&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">],</span>
-            <span class="p">[</span><span class="o">-</span><span class="mi">8522787127447073495</span><span class="p">,</span> <span class="s1">&#39;barry&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">],</span>
-            <span class="p">[</span><span class="o">-</span><span class="mi">6480567542315338377</span><span class="p">,</span> <span class="s1">&#39;guido&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]]</span>
-
-</code></pre></td></tr></table>
-</div>
-</div><p>하지만 위의 두 버전에서 각기 다른 구현된 딕셔너리를 살펴보면 이해를 할 수 있습니다.</p>
-<p>앞서 설명하였듯이 Python 3.5에서는 <code>entries</code>라는 빈 공간도 PyDictKeyEntry라는 타입으로 채워진 하나의 배열을 사용해 key를 해시하여 얻은 값을 인덱스로 사용하여 저장하였다면, Python 3.6에서는 key와 매핑될 객체를 추가해나가는 <code>entries</code>와 key를 해시하여 얻은 값에 해당하는 위치에 담기는 순서를 저장하는  <code>indices</code>, 총 2개의 배열을 사용하면서 <code>indices</code>는 int 타입의 희소배열을 사용하게 되고 PyDictKeyEntry는 딕셔너리에 담긴 객체의 개수만큼만 크기를 차지하게 되어 메모리를 Python 3.5에서보다 절약이 될 수 있다고 합니다. 또, 이 글을 쓰게 된 이유인 순서를 저장하는 이유가 바로  <code>indices</code>에서 나오게 됩니다.</p>
+</div><p>따라서 데이터의 입력된 순서가 아주 중요한 상황이나 하위 호환성을 고려해야하는 상황에서는 OrderedDict를 사용하여 순서를 보장하는 고려해보는 것이 좋을 것 같습니다.</p>
 <h2 id="결론">결론</h2>
-<p>이렇게 Dict, OrderedDict에 대해서 간단히 알아보고 Python 3.5와 3.6에서 딕셔너리의 구현되어 있는 구조를 알아보면서 딕셔너리에 입력 순서가 저장되는 이유에 대해서 알아보았습니다. Python 3.6이후부터 딕셔너리에 순서가 생기기는 했지만, OrderedDict 부분에서 살펴본대로 동등성을 비교하는 부분이 다르고 하위호환을 고려한다면 용도에 맞게 사용하는 것이 좋을 것 같습니다.</p>
-<br>
-<hr>
+<p>딕셔너리와 OrderedDict에 대해서 간단히 알아보고 Python 3.5와 3.6에서 딕셔너리의 구현되어 있는 구조를 알아보면서 딕셔너리에 입력 순서가 저장되는 이유에 대해서 알아보았습니다. Python 3.6이후부터 딕셔너리에 순서가 생기기는 했지만, OrderedDict 부분에서 살펴본대로 동등성을 비교하는 부분이 다르고 하위호환을 고려한다면 용도에 맞게 사용하는 것이 좋을 것 같습니다.</p>
 <ul>
-<li>참고 사이트
+<li>
+<p>참고 사이트</p>
 <ul>
-<li><a href="https://docs.python.org/ko/3/library/stdtypes.html#dict">https://docs.python.org/ko/3/library/stdtypes.html#dict</a></li>
-<li><a href="https://docs.python.org/3/library/collections.html#collections.OrderedDict">https://docs.python.org/3/library/collections.html#collections.OrderedDict</a></li>
-<li><a href="https://stackoverflow.com/questions/39980323/are-dictionaries-ordered-in-python-3-6/39980744#39980744">https://stackoverflow.com/questions/39980323/are-dictionaries-ordered-in-python-3-6/39980744#39980744</a></li>
+<li>
+<p><a href="https://docs.python.org/ko/3/library/stdtypes.html#dict">https://docs.python.org/ko/3/library/stdtypes.html#dict</a></p>
+</li>
+<li>
+<p><a href="https://docs.python.org/3/library/collections.html#collections.OrderedDict">https://docs.python.org/3/library/collections.html#collections.OrderedDict</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/39980323/are-dictionaries-ordered-in-python-3-6/39980744#39980744">https://stackoverflow.com/questions/39980323/are-dictionaries-ordered-in-python-3-6/39980744#39980744</a></p>
+</li>
+<li>
+<p><a href="https://github.com/zpoint/CPython-Internals/blob/master/BasicObject/dict/dict.md">https://github.com/zpoint/CPython-Internals/blob/master/BasicObject/dict/dict.md</a></p>
+</li>
+<li>
+<p><a href="https://kadensungbincho.tistory.com/23">https://kadensungbincho.tistory.com/23</a></p>
+</li>
 </ul>
 </li>
 </ul></div>
