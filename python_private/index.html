@@ -9,8 +9,8 @@
 <meta property="og:description" content="Python의 _, __에 대한 설명" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hooong.github.io/python_private/" /><meta property="og:image" content="https://hooong.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-04-05T10:16:51&#43;09:00" />
-<meta property="article:modified_time" content="2021-04-05T10:16:51&#43;09:00" />
+<meta property="article:published_time" content="2021-04-05T10:16:51+09:00" />
+<meta property="article:modified_time" content="2021-04-05T10:16:51+09:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://hooong.github.io/logo.png"/>
@@ -137,7 +137,7 @@
 <p>python은 java에서의 private처럼 객체 내부에서만 접근할 수 있는 &laquo;비공개&raquo; 인스턴스 변수는 존재하지 않는다. 그러나 변수명 앞에 <code>_</code>를 붙이는 규약을 통해 공개적이지 않은 부분으로 취급하는 규약이 있다. 이는 규약일 뿐, 얼마든지 해당 변수에 접근과 변경이 가능하다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -159,7 +159,7 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
@@ -185,7 +185,7 @@
 <p>그런데 변수명 앞에 <code>__</code>를 붙이고 접근을 하면 AttributeError가 발생하는 것을 확인할 수 있다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -197,7 +197,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__weight</span> <span class="o">=</span> <span class="n">weight</span>
@@ -212,7 +212,7 @@
 </div><p><code>__</code>를 붙여서 접근을 못하게끔하여 private한 변수로 만드는 것으로 생각할 수도 있다. 그러나 AttributeError는 해당 필드(<code>__weight</code>)가 존재하지 않는다는 에러이다. Python에서 이는 이름 뒤섞기(name mangling)이라는 것으로 <code>_&lt;class-name&gt;__&lt;attribute-name&gt;</code>이라는 속성을 만든다. 따라서 위의 예제에서 <code>__weight</code>에 접근하기 위해서는 아래와 같이 접근할 수 있다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -225,7 +225,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">poter</span><span class="o">.</span><span class="n">_Person__weight</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">poter</span><span class="o">.</span><span class="n">_Person__weight</span>
 <span class="mi">60</span>
 
 <span class="c1"># poter가 가진 인스턴스 변수 확인</span>
@@ -234,7 +234,7 @@
 
 <span class="c1"># 물론 변경도 가능하다.</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">poter</span><span class="o">.</span><span class="n">_Person__weight</span> <span class="o">=</span> <span class="mi">65</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">poter</span><span class="o">.</span><span class="n">_Person__weight</span><span class="err">?ㅇ</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">poter</span><span class="o">.</span><span class="n">_Person__weight</span><span class="err">?</span><span class="n">ㅇ</span>
 <span class="mi">65</span>
 </code></pre></td></tr></table>
 </div>

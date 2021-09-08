@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "style.min.css",
-	"sourceRoot": "/Users/hongseokjun/Documents/blog/tech_blog",
+	"sourceRoot": "/Users/hongseokjun/Documents/blog/hooong_blog",
 	"sources": [
 		"themes/uBlogger/assets/css/style.scss",
 		"themes/uBlogger/assets/css/_variables.scss",

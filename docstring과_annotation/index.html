@@ -9,8 +9,8 @@
 <meta property="og:description" content="Python의 Docstring과 Annotation에 대한 정리" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hooong.github.io/docstring%EA%B3%BC_annotation/" /><meta property="og:image" content="https://hooong.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-03-06T21:50:13&#43;09:00" />
-<meta property="article:modified_time" content="2021-03-06T21:50:13&#43;09:00" />
+<meta property="article:published_time" content="2021-03-06T21:50:13+09:00" />
+<meta property="article:modified_time" content="2021-03-06T21:50:13+09:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://hooong.github.io/logo.png"/>
@@ -163,7 +163,7 @@
 <h4 id="example">Example</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -181,7 +181,7 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">my_function</span><span class="p">():</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">my_function</span><span class="p">():</span>
 <span class="o">...</span>     <span class="s2">&#34;&#34;&#34;
 </span><span class="s2">...     1. 이 함수가 하는 일은 무엇인가요?
 </span><span class="s2">...
@@ -194,9 +194,9 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">my_function</span><span class="o">.</span><span class="vm">__doc__</span>
 <span class="s1">&#39;1. 이 함수가 하는 일은 무엇인가요?</span><span class="se">\n</span>
  \<span class="n">n</span>
- <span class="mf">2.</span> <span class="err">이</span> <span class="err">함수는</span> <span class="err">무엇을</span> <span class="err">입력받나요?</span>\<span class="n">n</span>
+ <span class="mf">2.</span> <span class="n">이</span> <span class="n">함수는</span> <span class="n">무엇을</span> <span class="n">입력받나요</span><span class="err">?</span>\<span class="n">n</span>
  \<span class="n">n</span>
- <span class="mf">3.</span> <span class="err">그래서</span> <span class="err">최종적으로</span> <span class="err">이</span> <span class="err">함수는</span> <span class="err">무엇을</span> <span class="err">반환하나요?</span>\<span class="n">n</span><span class="s1">&#39;</span>
+ <span class="mf">3.</span> <span class="n">그래서</span> <span class="n">최종적으로</span> <span class="n">이</span> <span class="n">함수는</span> <span class="n">무엇을</span> <span class="n">반환하나요</span><span class="err">?</span>\<span class="n">n</span><span class="s1">&#39;</span>
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -205,7 +205,7 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -213,7 +213,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># dict.update에 대한 docstring 예제</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># dict.update에 대한 docstring 예제</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">dict</span><span class="o">.</span><span class="n">update</span><span class="o">.</span><span class="vm">__doc__</span>
 <span class="s1">&#39;D.update([E, ]**F) -&gt; None.  Update D from dict/iterable E and F.</span><span class="se">\n</span>
 <span class="n">If</span> <span class="n">E</span> <span class="ow">is</span> <span class="n">present</span> <span class="ow">and</span> <span class="n">has</span> <span class="n">a</span> <span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="n">method</span><span class="p">,</span> <span class="n">then</span> <span class="n">does</span><span class="p">:</span>  <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">E</span><span class="p">:</span> <span class="n">D</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">E</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>\<span class="n">n</span>
@@ -232,7 +232,7 @@
 <h4 id="example-1">Example</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -260,31 +260,31 @@
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">):</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">):</span>
 <span class="o">...</span>             <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="n">lat</span>
-<span class="o">...</span>             <span class="bp">self</span><span class="o">.</span><span class="n">long</span> <span class="o">=</span> <span class="nb">long</span>
+<span class="o">...</span>             <span class="bp">self</span><span class="o">.</span><span class="n">long</span> <span class="o">=</span> <span class="n">long</span>
 <span class="o">...</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">locate</span><span class="p">(</span><span class="n">latitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">longitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Point</span><span class="p">:</span>
 <span class="o">...</span>     <span class="s2">&#34;&#34;&#34;맴에서 좌표에 해당하는 객체를 검색&#34;&#34;&#34;</span>
 <span class="o">...</span>     <span class="k">return</span> <span class="n">Point</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">)</span>
 <span class="o">...</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">locate</span><span class="o">.</span><span class="n">__annotations__</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">locate</span><span class="o">.</span><span class="vm">__annotations__</span>
 <span class="p">{</span><span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">float</span><span class="s1">&#39;&gt;, &#39;</span><span class="n">longitude</span><span class="s1">&#39;: &lt;class &#39;</span><span class="nb">float</span><span class="s1">&#39;&gt;, &#39;</span><span class="k">return</span><span class="s1">&#39;: &lt;class &#39;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Point</span><span class="s1">&#39;&gt;}</span>
 
 <span class="c1"># 변수에도 지정 가능 (Python 3.6이상)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
 <span class="o">...</span>     <span class="n">lat</span><span class="p">:</span> <span class="nb">float</span>
-<span class="o">...</span>     <span class="nb">long</span><span class="p">:</span> <span class="nb">float</span>
+<span class="o">...</span>     <span class="n">long</span><span class="p">:</span> <span class="nb">float</span>
 <span class="o">...</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">Point</span><span class="o">.</span><span class="n">__annotations__</span>
-<span class="p">{</span><span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">float</span><span class="s1">&#39;&gt;, &#39;</span><span class="nb">long</span><span class="s1">&#39;: &lt;class &#39;</span><span class="nb">float</span><span class="s1">&#39;&gt;}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Point</span><span class="o">.</span><span class="vm">__annotations__</span>
+<span class="p">{</span><span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">float</span><span class="s1">&#39;&gt;, &#39;</span><span class="n">long</span><span class="s1">&#39;: &lt;class &#39;</span><span class="nb">float</span><span class="s1">&#39;&gt;}</span>
 
 <span class="c1"># 타입이 아닌 문자열도 가능</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">aa</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="s2">&#34;리턴&#34;</span><span class="p">:</span>
 <span class="o">...</span>     <span class="k">pass</span>
 <span class="o">...</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">aa</span><span class="o">.</span><span class="n">__annotations__</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">aa</span><span class="o">.</span><span class="vm">__annotations__</span>
 <span class="p">{</span><span class="s1">&#39;return&#39;</span><span class="p">:</span> <span class="s1">&#39;리턴&#39;</span><span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -297,13 +297,13 @@
 <p>Docstring에 포함된 정보의 일부는 어노테이션으로 이동시킬 수 있는 것은 사실이지만, docstring을 통해 보다 나은 문서화를 위한 여지를 남겨두어야 한다. 동적 데이터 타입과 중첩 데이터 타입의 경우 예상 데이터의 예제를 제공하여 어떤 형태의 데이터를 다루는지 제공하는 것이 좋다는 것이다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">data_from_response</span><span class="p">(</span><span class="n">response</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">data_from_response</span><span class="p">(</span><span class="n">response</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="s2">&#34;status&#34;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span>
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">response</span><span class="p">[</span><span class="s2">&#34;payload&#34;</span><span class="p">]}</span>
@@ -312,7 +312,7 @@
 </div><p>예를들어 위와 같이 데이터의 유효성을 검사하고 dict값을 반환하는 함수를 보면 <code>response</code>객체의 올바른 인스턴스의 형태는 알 수가 없다. 따라서 아래와 같이 이러한 함수에 docstring을 통해 보다 나은 설명을 추가할 수가 있다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -333,7 +333,7 @@
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">data_from_response</span><span class="p">(</span><span class="n">response</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">data_from_response</span><span class="p">(</span><span class="n">response</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
     <span class="s2">&#34;&#34;&#34;response에 문제가 없다면 response의 payload를 반환
 </span><span class="s2">    
 </span><span class="s2">    - response의 예::

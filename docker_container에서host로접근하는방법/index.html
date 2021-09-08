@@ -9,8 +9,8 @@
 <meta property="og:description" content="macOS의 Docker Container에서 host로 접근하는 방법에 대한 정리" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hooong.github.io/docker_container%EC%97%90%EC%84%9Chost%EB%A1%9C%EC%A0%91%EA%B7%BC%ED%95%98%EB%8A%94%EB%B0%A9%EB%B2%95/" /><meta property="og:image" content="https://hooong.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-06-23T21:31:45&#43;09:00" />
-<meta property="article:modified_time" content="2021-06-23T21:31:45&#43;09:00" />
+<meta property="article:published_time" content="2021-06-23T21:31:45+09:00" />
+<meta property="article:modified_time" content="2021-06-23T21:31:45+09:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://hooong.github.io/logo.png"/>
@@ -18,7 +18,7 @@
 <meta name="twitter:title" content="Docker Container 내부에서 Host로 접근하는 방법(feat.macOS)"/>
 <meta name="twitter:description" content="macOS의 Docker Container에서 host로 접근하는 방법에 대한 정리"/>
 <meta name="application-name" content="hooong&#39;sTIL">
-<meta name="apple-mobile-web-app-title" content="hooong&#39;sTIL"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar_favi.ico" type="image/x-icon"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://hooong.github.io/docker_container%EC%97%90%EC%84%9Chost%EB%A1%9C%EC%A0%91%EA%B7%BC%ED%95%98%EB%8A%94%EB%B0%A9%EB%B2%95/" /><link rel="prev" href="https://hooong.github.io/python_dictionary_order/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+<meta name="apple-mobile-web-app-title" content="hooong&#39;sTIL"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar_favi.ico" type="image/x-icon"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://hooong.github.io/docker_container%EC%97%90%EC%84%9Chost%EB%A1%9C%EC%A0%91%EA%B7%BC%ED%95%98%EB%8A%94%EB%B0%A9%EB%B2%95/" /><link rel="prev" href="https://hooong.github.io/python_dictionary_order/" /><link rel="next" href="https://hooong.github.io/docker_container%EC%97%90%EC%84%9Chost%EB%A1%9C%EC%A0%91%EA%B7%BC%ED%95%98%EB%8A%94%EB%B0%A9%EB%B2%95-copy/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -176,9 +176,9 @@
 <p>이번 글에서는 macOS의 도커 컨테이너 내부에서 로컬(macOS) 호스트로 접근하는 방법에 대하여 알아본 내용을 정리해보았다. 리눅스 머신을 사용한다면 host 네트워크 방식을 사용할 수 있겠지만 macOS에서는 이 host 네트워크 방식이 동작하지 않는다는 점이 있고 독립적인 네트워크를 사용할 수 없다는 단점을 가지고 있었다. 따라서 개요에서와 같은 문제에 부딛혔던 필자는 도커가 제공하는 <code>host.docker.internal</code>이라는 도메인 네임을 이용하므로써 의외로 간단하게 문제를 해결할 수 있었다. 이와 같은 경우가 빈번하지는 않을 것 같지만 해당 내용을 알고 있다면 필요한 상황에서는 꽤 유용하게 사용될 수 있을 것 같다.</p>
 <h2 id="참고">참고</h2>
 <ul>
-<li><a href="https://seorenn.tistory.com/20">https://seorenn.tistory.com/20</a></li>
-<li><a href="https://bluese05.tistory.com/38">https://bluese05.tistory.com/38</a></li>
-<li><a href="https://docs.mirantis.com/containers/v3.1/dockeree-ref-arch/networking/scalable-container-networks.html">https://docs.mirantis.com/containers/v3.1/dockeree-ref-arch/networking/scalable-container-networks.html</a></li>
+<li><a href="https://seorenn.tistory.com/20" target="_blank" rel="noopener noreffer">https://seorenn.tistory.com/20</a></li>
+<li><a href="https://bluese05.tistory.com/38" target="_blank" rel="noopener noreffer">https://bluese05.tistory.com/38</a></li>
+<li><a href="https://docs.mirantis.com/containers/v3.1/dockeree-ref-arch/networking/scalable-container-networks.html" target="_blank" rel="noopener noreffer">https://docs.mirantis.com/containers/v3.1/dockeree-ref-arch/networking/scalable-container-networks.html</a></li>
 </ul></div>
 
             <div id="disqus_thread" style="padding: 50px;"></div>
@@ -207,6 +207,9 @@
     </div>
 </div><div class="post-footer" id="post-footer"><div class="post-navigation"><div class="post-nav-box nav-box-prev">
             <a class="nav-box" href="/python_dictionary_order/"><span class="nav-icon"><svg aria-hidden="true" data-prefix="fas" data-icon="chevron-circle-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z"></path></svg></span><div style="text-align: right;padding-left: 10px"><div class="nav-text-h">Next article</div><span class="nav-text">Python 3.6부터는 Dict가 순서를 기억한다.</span></div></a>
+        </div>
+        <div class="post-nav-box nav-box-next">
+            <a class="nav-box" href="/docker_container%EC%97%90%EC%84%9Chost%EB%A1%9C%EC%A0%91%EA%B7%BC%ED%95%98%EB%8A%94%EB%B0%A9%EB%B2%95-copy/"><div style="padding-right: 10px"><div class="nav-text-h">Next article</div><span class="nav-text">[Django] MIDDLEWARE 와 MIDDLEWARE_CLASSES에 대한 정리</span></div><span class="nav-icon"><svg aria-hidden="true" data-prefix="fas" data-icon="chevron-circle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z"></path></svg></span></a>
         </div></div></div>
 </div>
         </div>

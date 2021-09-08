@@ -9,8 +9,8 @@
 <meta property="og:description" content="Git의 switch와 restore" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hooong.github.io/git_switchrestore/" /><meta property="og:image" content="https://hooong.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-04-14T22:14:15&#43;09:00" />
-<meta property="article:modified_time" content="2021-04-14T22:14:15&#43;09:00" />
+<meta property="article:published_time" content="2021-04-14T22:14:15+09:00" />
+<meta property="article:modified_time" content="2021-04-14T22:14:15+09:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://hooong.github.io/logo.png"/>
@@ -156,14 +156,14 @@
 <p>이처럼 하나의 명령어가 다른 두 가지 이상의 기능을 동시에 가지게 되면 명시적이지 않을 수 있다. 따라서 Git은 2.23.0버전에서 이 두 가지의 기능을 별도의 명령어로 나누어서 좀 더 명령어를 명시적으로 사용할 수 있게끔 만들었다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"> * Two new commands &#34;git switch&#34; and &#34;git restore&#34; are introduced to
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"> * Two new commands &#34;git switch&#34; and &#34;git restore&#34; are introduced to
    split &#34;checking out a branch to work on advancing its history&#34; and
    &#34;checking out paths out of the index and/or a tree-ish to work on
    advancing the current history&#34; out of the single &#34;git checkout&#34;
@@ -175,7 +175,7 @@
 <p>참고로 현재 *Git(2.24.3)*버전 기준으로 <code>$ git --help</code> 로 지원하는 명령어를 살펴보면 <code>checkout</code> 을 찾아볼 수 없다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -208,7 +208,7 @@
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">start a working area <span class="o">(</span>see also: git <span class="nb">help</span> tutorial<span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">start a working area <span class="o">(</span>see also: git <span class="nb">help</span> tutorial<span class="o">)</span>
    clone     Clone a repository into a new directory
    init      Create an empty Git repository or reinitialize an existing one
 
@@ -247,13 +247,13 @@ collaborate <span class="o">(</span>see also: git <span class="nb">help</span> w
 <h3 id="synopsis">SYNOPSIS</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git switch <span class="o">[</span>&lt;option&gt;<span class="o">]</span> <span class="o">[</span>--no-guess<span class="o">]</span> &lt;branch&gt;
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git switch <span class="o">[</span>&lt;option&gt;<span class="o">]</span> <span class="o">[</span>--no-guess<span class="o">]</span> &lt;branch&gt;
 $ git switch <span class="o">[</span>&lt;option&gt;<span class="o">]</span> --detach <span class="o">[</span>&lt;start-point&gt;<span class="o">]</span>
 $ git switch <span class="o">[</span>&lt;option&gt;<span class="o">]</span> <span class="o">(</span>-c<span class="p">|</span>-C<span class="o">)</span> &lt;new-brach&gt; <span class="o">[</span>&lt;start-point&gt;<span class="o">]</span>
 $ git switch <span class="o">[</span>&lt;option&gt;<span class="o">]</span> --orphan &lt;new-branch&gt;
@@ -262,7 +262,7 @@ $ git switch <span class="o">[</span>&lt;option&gt;<span class="o">]</span> --or
 </div><h3 id="기본-사용-예시">기본 사용 예시</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -275,7 +275,7 @@ $ git switch <span class="o">[</span>&lt;option&gt;<span class="o">]</span> --or
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># issue1이라는 branch를 생성하고 전환</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># issue1이라는 branch를 생성하고 전환</span>
 $ git switch -c issue1
 
 <span class="c1"># master branch로 전환</span>
@@ -342,12 +342,12 @@ $ git switch switch -C issue1
 <h3 id="synopsis-1">SYNOPSIS</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ git restore <span class="o">[</span>&lt;option&gt;<span class="o">]</span> <span class="o">[</span>--source<span class="o">=</span>&lt;tree&gt;<span class="o">]</span> <span class="o">[</span>--staged<span class="o">]</span> <span class="o">[</span>--worktree<span class="o">]</span> <span class="o">[</span>--<span class="o">]</span> &lt;pathspec&gt;...
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git restore <span class="o">[</span>&lt;option&gt;<span class="o">]</span> <span class="o">[</span>--source<span class="o">=</span>&lt;tree&gt;<span class="o">]</span> <span class="o">[</span>--staged<span class="o">]</span> <span class="o">[</span>--worktree<span class="o">]</span> <span class="o">[</span>--<span class="o">]</span> &lt;pathspec&gt;...
 $ git restore <span class="o">[</span>&lt;option&gt;<span class="o">]</span> <span class="o">[</span>--source<span class="o">=</span>&lt;tree&gt;<span class="o">]</span> <span class="o">[</span>--staged<span class="o">]</span> <span class="o">[</span>--worktree<span class="o">]</span> --pathspec-from-file<span class="o">=</span>&lt;file&gt; <span class="o">[</span>--pathspec-file-nul<span class="o">]</span>
 $ git restore <span class="o">(</span>-p<span class="p">|</span>--patch<span class="o">)</span> <span class="o">[</span>&lt;option&gt;<span class="o">]</span> <span class="o">[</span>--source<span class="o">=</span>&lt;tree&gt;<span class="o">]</span> <span class="o">[</span>--staged<span class="o">]</span> <span class="o">[</span>--worktree<span class="o">]</span> <span class="o">[</span>--<span class="o">]</span> <span class="o">[</span>&lt;pathspec&gt;...<span class="o">]</span>
 </code></pre></td></tr></table>
@@ -355,7 +355,7 @@ $ git restore <span class="o">(</span>-p<span class="p">|</span>--patch<span cla
 </div><h3 id="기본-사용-예시-1">기본 사용 예시</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -374,7 +374,7 @@ $ git restore <span class="o">(</span>-p<span class="p">|</span>--patch<span cla
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 현재 디렉터리(&#39;.&#39;)를 HEAD의 working tree로 복원</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 현재 디렉터리(&#39;.&#39;)를 HEAD의 working tree로 복원</span>
 $ git restore .
 
 <span class="c1"># 현재 디렉터리(&#39;.&#39;)를 특정 커밋(&#39;943453b&#39;)의 working tree로 복원</span>
