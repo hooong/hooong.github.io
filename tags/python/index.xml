@@ -3,7 +3,14 @@
         <title>Python - Tag - hooong&#39;s TIL</title>
         <link>https://hooong.github.io/tags/python/</link>
         <description>Python - Tag - hooong&#39;s TIL</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 13 Oct 2021 21:48:11 &#43;0900</lastBuildDate><atom:link href="https://hooong.github.io/tags/python/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 10 Nov 2021 20:54:21 &#43;0900</lastBuildDate><atom:link href="https://hooong.github.io/tags/python/" rel="self" type="application/rss+xml" /><item>
+    <title>[Python] a, b = b, a는 어떻게 동작하는걸까?</title>
+    <link>https://hooong.github.io/python_multiple_assignment/</link>
+    <pubDate>Wed, 10 Nov 2021 20:54:21 &#43;0900</pubDate>
+    <author>hooong</author>
+    <guid>https://hooong.github.io/python_multiple_assignment/</guid>
+    <description><![CDATA[python multiple assignment의 동작에 관한 정리]]></description>
+</item><item>
     <title>[Python] Pyenv와 Pyenv-virtualenv를 이용한 Python 개발환경 구성</title>
     <link>https://hooong.github.io/pyenv_pyenv-virtualenv/</link>
     <pubDate>Wed, 13 Oct 2021 21:48:11 &#43;0900</pubDate>

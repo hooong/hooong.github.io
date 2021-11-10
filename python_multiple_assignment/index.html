@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>[Python] a, b = b, a는 어떻게 동작하는걸까? | </title><meta name="Description" content="python multiple assignment의 동작에 관한 정리">
+<meta name="google-site-verification" content="Pt00dWPxcxsbgWsBbydrqAzuOGm0nXcPrbYGM1FP6Uo" /><meta property="og:title" content="[Python] a, b = b, a는 어떻게 동작하는걸까?" />
+<meta property="og:description" content="python multiple assignment의 동작에 관한 정리" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hooong.github.io/python_multiple_assignment/" /><meta property="og:image" content="https://hooong.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-10T20:54:21+09:00" />
+<meta property="article:modified_time" content="2021-11-10T20:54:21+09:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://hooong.github.io/logo.png"/>
+
+<meta name="twitter:title" content="[Python] a, b = b, a는 어떻게 동작하는걸까?"/>
+<meta name="twitter:description" content="python multiple assignment의 동작에 관한 정리"/>
+<meta name="application-name" content="hooong&#39;sTIL">
+<meta name="apple-mobile-web-app-title" content="hooong&#39;sTIL"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar_favi.ico" type="image/x-icon"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://hooong.github.io/python_multiple_assignment/" /><link rel="prev" href="https://hooong.github.io/pyenv_pyenv-virtualenv/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[Python] a, b = b, a는 어떻게 동작하는걸까?",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/hooong.github.io\/python_multiple_assignment\/"
+        },"genre": "posts","keywords": "Python","wordCount":  781 ,
+        "url": "https:\/\/hooong.github.io\/python_multiple_assignment\/","datePublished": "2021-11-10T20:54:21+09:00","dateModified": "2021-11-10T20:54:21+09:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "hooong"
+            },"description": "python multiple assignment의 동작에 관한 정리"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="hooong&#39;s TIL" class="header-logo"><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="hooong&#39;s  TIL"> Posts </a><a class="menu-item" href="/tags/" title="hooong&#39;s  TIL"> Tags </a><a class="menu-item" href="/categories/" title="hooong&#39;s  TIL"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="hooong&#39;s TIL" class="header-logo"><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="hooong&#39;s  TIL">Posts</a><a class="menu-item" href="/tags/" title="hooong&#39;s  TIL">Tags</a><a class="menu-item" href="/categories/" title="hooong&#39;s  TIL">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main"><div class="container content-article page-toc theme-classic"><div class="toc" id="toc-auto">
+            <div class="toc-title">Contents</div>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><div class="header-post">
+        <div class="post-title">
+
+            <div class="post-all-meta">
+            <div class="breadcrumbs">
+    <a href="/">Home </a>/ <a href="/"> [Python] a, b = b, a는 어떻게 동작하는걸까? </a>
+</div>
+            <h1 class="single-title animated flipInX">[Python] a, b = b, a는 어떻게 동작하는걸까?</h1><div class="post-meta">
+                <div class="post-meta-line">&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time class="timeago" datetime="2021-11-10">2021-11-10</time>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;781 words
+                    &nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;4 minutes</div>
+            </div>
+        </div>
+
+
+    </div>
+
+    </div>
+
+        <article class="single toc-start">
+
+        <div class="content-block content-block-first content-block-position">
+
+        <div class="post"><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#시작하며">시작하며</a></li>
+    <li><a href="#python의-swap-동작-방식">Python의 swap 동작 방식</a>
+      <ul>
+        <li><a href="#cpython에서의-swap">CPython에서의 swap</a></li>
+        <li><a href="#pypy에서의-swap">PyPy에서의 swap</a></li>
+        <li><a href="#그럼-그냥-python에서도-전통적인-swap을-구현하면-효율적이지-않나요">그럼&hellip; 그냥 Python에서도 전통적인 swap을 구현하면 효율적이지 않나요?</a></li>
+      </ul>
+    </li>
+    <li><a href="#마무리하며">마무리하며</a></li>
+    <li><a href="#레퍼런스">레퍼런스</a></li>
+  </ul>
+</nav></div>
+            </div><h1 id="python-a-b--b-a는-어떻게-동작하는걸까">[Python] a, b = b, a는 어떻게 동작하는걸까?</h1>
+<h2 id="시작하며">시작하며</h2>
+<p>일반적으로 Java나 C언어에서 변수 a와 b의 값을 서로 바꾸기 위해서는 tmp변수를 두어 아래와 같이 구현을 해야한다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>그러나 신기하게도 Python에서는 아래와 같이 a와 b의 값을 바꿀 수 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+  <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>도대체 Python 어떻게 동작하길래 a와 b를 바로 바꿔서 저장을 할 수 있는걸까?라는 의문이 생겼고, 이를 조사해본 내용을 정리해보고자 합니다.</p>
+<h2 id="python의-swap-동작-방식">Python의 swap 동작 방식</h2>
+<p>Python은 공식적으로 버추얼 머신을 구현하여 제공하지 않아 CPython, PyPy, IronPython, Jython등 다양한 구현체가 존재합니다. 각기 구현체마다 swap을 하는 방식은 다를 수 있겠지만 이번 글에서는 대표적으로 사용되는 CPython과 PyPy에 대해서 살펴보고자 합니다.</p>
+<h3 id="cpython에서의-swap">CPython에서의 swap</h3>
+<p>swap의 동작 방식을 알기위해서는 작성된 코드의 바이트코드를 살펴보아야 했습니다. (<a href="https://docs.python.org/ko/3.8/library/dis.html" target="_blank" rel="noopener noreffer">dis 라이브러리</a>는 컴파일 되는 바이트 코드를 분석하기 쉽게 역어셈블을 해준다.)</p>
+<p>그럼 위에서 작성되었던 python의 sw는p 코드인 <code>a, b = b, a</code>를 바이트 코드의 동작 과정을 살펴보면 아래와 같습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&gt;&gt; dis.dis(swap)
+0 LOAD_FAST         1 (b)
+2 LOAD_FAST         0 (a)
+4 ROT_TWO
+6 STORE_FAST        0 (a)
+8 STORE_FAST        1 (b)
+</code></pre></td></tr></table>
+</div>
+</div><p>각 줄에는 코드의 offset(각 명령어는 2바이트를 차지함), opname(명령어), arg 순으로 보여지게 됩니다. 위의 동작 과정을 알기 위해서는 여기서 나오는 각 명령어들에 대해서 살펴보아야할 필요성이 있었습니다. 간단하게 정리해보면 아래와 같습니다.</p>
+<blockquote>
+<p><a href="https://docs.python.org/ko/3.8/library/dis.html#opcode-LOAD_FAST" target="_blank" rel="noopener noreffer">LOAD_FAST</a> : 로컬 메모리에 저장된 값을 스택으로 푸시</p>
+<p><a href="https://docs.python.org/ko/3.8/library/dis.html#opcode-STORE_FAST" target="_blank" rel="noopener noreffer">STORE_FAST</a> : 스택의 최상단의 값을 로컬 메모리에 저장</p>
+<p><a href="https://docs.python.org/ko/3.8/library/dis.html#opcode-ROT_TWO" target="_blank" rel="noopener noreffer">ROT_TWO</a> : 스택 최상단의 두 값의 자리를 바꿈</p>
+</blockquote>
+<p>위의 명령어를 보면 CPython의 버추얼 머신이 스택으로 동작한다는 것을 눈치채볼 수 있습니다. CPython의 버추얼 머신은 글로벌, 로컬 메모리와 연산을 위한 스택을 가진다고합니다. 따라서 어떠한 연산을 하기 위해서는 글로벌 또는 로컬에 저장되어 있는 값을 스택에 복사를 해온 뒤 사용하게 됩니다.</p>
+<p>그럼 이제 명령어에 대해서도 얼핏 알게되었으니 swap의 동작 과정을 살펴봅시다. 차례대로 동작 과정을 한글로 정리해보면 다음과 같습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">1. 변수 b의 값을 스택에 푸시
+2. 변수 a의 값을 스택에 푸시
+3. 스택 상단의 두 값 위치를 변경
+4. 스택 최상단의 값(b)를 변수 a에 저장
+5. 스택 최상단의 값(a)를 변수 b에 저장
+</code></pre></td></tr></table>
+</div>
+</div><p>그럼 여기서 의문을 가질수도 있습니다. 3번 과정(스택의 상단 두 개의 값의 위치를 변경)은 어떻게 동작하는가. 구현체를 살펴보면 아래와 같습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="n">TARGET</span><span class="p">(</span><span class="n">ROT_TWO</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">PyObject</span> <span class="o">*</span><span class="n">top</span> <span class="o">=</span> <span class="n">TOP</span><span class="p">();</span>
+  <span class="n">PyObject</span> <span class="o">*</span><span class="n">second</span> <span class="o">=</span> <span class="n">SECOND</span><span class="p">();</span>
+  <span class="n">SET_TOP</span><span class="p">(</span><span class="n">second</span><span class="p">);</span>
+  <span class="n">SET_SECOND</span><span class="p">(</span><span class="n">top</span><span class="p">);</span>
+  <span class="n">FAST_DISPATCH</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>위의 코드를 살펴보면 <code>top</code>, <code>second</code>라는 두 개의 임시변수를 사용하고 있다는 것을 눈치챌 수 있습니다. 즉, 전통적인 java, c에서 구현하는 swap보다 비효율적이라는 것을 알 수 있었습니다. <em>(필자는 코드가 단축된 만큼 swap과정에서 더 적은 메모리를 사용하여 효율적이라고 문득 생각했지만 이 생각이 잘못되었다는 생각을 가지게 된 부분이다.)</em> 또한, 이미 스택이라는 임시 공간을 사용하는 것으로 비효율적이라고 할 수 있습니다.</p>
+<p>쉽게 비유를 해보면, 전통적인 java 혹은 c에서의 swap 동작에서는 의자가 3개만 있으면 되지만, CPython에서는 2(로컬 메모리) + 2(스택) + 2(ROT_TWO에서의 임시변수)로 총 6개의 의자를 가져야하는 것입니다.</p>
+<h3 id="pypy에서의-swap">PyPy에서의 swap</h3>
+<p>CPython보다 높은 성능을 내는것을 주된 목표를 가진 PyPy에서는 CPython에서와 동작 과정은 살짝 다릅니다. 바로 PyPy 바이트 코드의 동작과정을 살펴보면 아래와 같습니다.(PyPy를 사용한 가상환경에서 dis라이브러리를 사용)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">0 LOAD_FAST                1 (b)
+2 LOAD_FAST                0 (a)
+4 STORE_FAST               1 (b)
+6 STORE_FAST               0 (a)
+</code></pre></td></tr></table>
+</div>
+</div><p>위의 동작 과정을 보면 CPython과 가장 큰 차이점으로는 <code>ROT_TWO</code>이 없다는 것이다. PyPy의 경우에는 가장 상단의 값을 바로 b에 저장하도록 구현이 되어있기 때문이라고 합니다. 즉 아래와 같이 동작합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">1. 변수 b의 값을 스택에 푸시
+2. 변수 a의 값을 스택에 푸시
+3. 스택 최상단의 값(a)를 변수 b에 저장
+4. 스택 최상단의 값(b)를 변수 a에 저장
+</code></pre></td></tr></table>
+</div>
+</div><p>따라서 CPython에 비해 2개의 의자를 덜 사용하기 때문에 더 빠르고 효율적이라고 볼 수 있습니다.</p>
+<h3 id="그럼-그냥-python에서도-전통적인-swap을-구현하면-효율적이지-않나요">그럼&hellip; 그냥 Python에서도 전통적인 swap을 구현하면 효율적이지 않나요?</h3>
+<p>아니요! 그렇지 않습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+     <span class="n">tmp</span> <span class="o">=</span> <span class="n">a</span>
+     <span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
+     <span class="n">b</span> <span class="o">=</span> <span class="n">tmp</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>위의 Python으로 짠 전통적인 swap함수의 바이트 코드를 분석해보면 다음과 같습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">0 LOAD_FAST                0 (a)
+2 STORE_FAST               2 (tmp)
+
+4 LOAD_FAST                1 (b)
+6 STORE_FAST               0 (a)
+
+8 LOAD_FAST                2 (tmp)
+10 STORE_FAST              1 (b)
+</code></pre></td></tr></table>
+</div>
+</div><p>얼핏 보면 <code>ROT_TWO</code>가 없으니까 <code>a, b = b, a</code>보다 효율적이지 않은가?라고 생각할 수도 있습니다. 그러나 위에서도 알 수 있었듯이 python은 스택 머신으로 로컬 메모리로 바로 값이 할당되지 않고 연산을 위해서는 스택을 거친다는 것입니다. 따라서 a를 tmp로 할당하는 과정, b를 a에 할당하는 과정, tmp를 b로 할당하는 과정에서 스택을 사용하게 됩니다. 즉, 여기서의 swap함수를 실행하는데 4개의 의자가 필요한 것입니다.(이는 의자 3개를 사용하는 java나 c보다 비효율적이다.)</p>
+<p>추가적으로 참조한 블로그 글에 따르면 <code>LOAD_FAST</code>와 <code>STORE_FAST</code>를 하는 것보다 <code>ROT_TWO</code>를 하는게 더 빠르다고 한다. 그렇기때문에 Python을 사용한다면 전통적인 swap 구현 방식 보다는 <code>a, b = b, a</code>를 사용하는 것이 더 빠르다고 한다.</p>
+<h2 id="마무리하며">마무리하며</h2>
+<p>막연한 궁금증으로 시작하여 깊게는 아니지만 Python의 특징들에 대해 알아볼 수 있는 계기가 되었던 것 같고, 앞으로도 더 깊게 찾아볼 Python에 대한 주제들도 얻어갈 수 있는 시간이어서 정말 좋았던 것 같다. 앞으로도 시간이 될때마다 CPython, PyPy등 다양한 구현체의 특징에 대해서도 알아보아야겠다.</p>
+<h2 id="레퍼런스">레퍼런스</h2>
+<ul>
+<li>
+<p><a href="https://blog.seulgi.kim/2017/01/python-swap.html?m=1" target="_blank" rel="noopener noreffer">https://blog.seulgi.kim/2017/01/python-swap.html?m=1</a></p>
+</li>
+<li>
+<p><a href="https://github.com/python/cpython/blob/752c979775c75f9b95d1227bfd60caa2beae6590/Python/ceval.c#L1210-L1216" target="_blank" rel="noopener noreffer">https://github.com/python/cpython/blob/752c979775c75f9b95d1227bfd60caa2beae6590/Python/ceval.c#L1210-L1216</a></p>
+</li>
+</ul></div>
+
+            <div id="disqus_thread" style="padding: 50px;"></div>
+            <script>
+                
+
+                
+
+                (function() { 
+                var d = document, s = d.createElement('script');
+                s.src = 'https://hooong.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+            <div class="post"><div class="post-info-share">
+    <span></span>
+</div>
+<div class="footer-post-author"style="border-radius: 10px;border-bottom: solid 2px #ececec">
+    <div class="author-avatar"><a href="" target="_blank"><img alt="" src="https://user-images.githubusercontent.com/78338337/110209403-b9795a00-7ecf-11eb-9bc5-d8d7edb21197.jpeg" border="0"></a></div>
+    <div class="author-info">
+        <div class="name"><a href="" target="_blank">SeokJun Hong</a></div>
+        <div class="number-posts">The Journey is The Reward.</span></div>
+    </div>
+</div><div class="post-footer" id="post-footer"><div class="post-navigation"><div class="post-nav-box nav-box-prev">
+            <a class="nav-box" href="/pyenv_pyenv-virtualenv/"><span class="nav-icon"><svg aria-hidden="true" data-prefix="fas" data-icon="chevron-circle-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z"></path></svg></span><div style="text-align: right;padding-left: 10px"><div class="nav-text-h">Next article</div><span class="nav-text">[Python] Pyenv와 Pyenv-virtualenv를 이용한 Python 개발환경 구성</span></div></a>
+        </div></div></div>
+</div>
+        </div>
+    <div id="toc-final"></div>
+    </article><div class=" post-tags post-tags-toc "><a href="/tags/python/" class="tag">Python</a></div></div></main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span>2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">hooong</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/twemoji/twemoji.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/typeit/typeit.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/auto-render.min.js"></script><script src="/lib/katex/copy-tex.min.js"></script><script src="/lib/katex/mhchem.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"data":{"id-1":"hooong's TIL","id-2":"hooong's TIL"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true,"typeit":{"cursorChar":"/","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js"></script><script src="/js/jquery-3.5.1.min.js"></script></body>
+</html>
