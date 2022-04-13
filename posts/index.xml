@@ -3,14 +3,7 @@
         <title>All Posts - hooong&#39;s TIL</title>
         <link>https://hooong.github.io/posts/</link>
         <description>All Posts | hooong&#39;s TIL</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 13 Apr 2022 14:00:53 &#43;0900</lastBuildDate><atom:link href="https://hooong.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>[Python] Selenium을 사용해 매크로 만들기 기초</title>
-    <link>https://hooong.github.io/python_selenium/</link>
-    <pubDate>Wed, 13 Apr 2022 14:00:53 &#43;0900</pubDate>
-    <author>hooong</author>
-    <guid>https://hooong.github.io/python_selenium/</guid>
-    <description><![CDATA[Selenium이 무엇이고, 이를 이용해 간단하게 매크로 만들기에 대한 내용]]></description>
-</item><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 10 Nov 2021 20:54:21 &#43;0900</lastBuildDate><atom:link href="https://hooong.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>[Python] a, b = b, a는 어떻게 동작하는걸까?</title>
     <link>https://hooong.github.io/python_multiple_assignment/</link>
     <pubDate>Wed, 10 Nov 2021 20:54:21 &#43;0900</pubDate>
@@ -52,6 +45,13 @@
     <author>hooong</author>
     <guid>https://hooong.github.io/git_switchrestore/</guid>
     <description><![CDATA[<p>Git의 switch와 restore에 대하여&hellip;</p>]]></description>
+</item><item>
+    <title>[Python] Selenium을 사용해 매크로 만들기 기초</title>
+    <link>https://hooong.github.io/python_selenium/</link>
+    <pubDate>Tue, 13 Apr 2021 14:00:53 &#43;0900</pubDate>
+    <author>hooong</author>
+    <guid>https://hooong.github.io/python_selenium/</guid>
+    <description><![CDATA[Selenium이 무엇이고, 이를 이용해 간단하게 매크로 만들기에 대한 내용]]></description>
 </item><item>
     <title>[Python]property</title>
     <link>https://hooong.github.io/python_property/</link>
