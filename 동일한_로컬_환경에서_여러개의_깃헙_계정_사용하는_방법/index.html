@@ -163,8 +163,8 @@ Enter file in which to save the key <span class="o">(</span>/root/.ssh/id_rsa<sp
 $ ls
 -rw-------  <span class="m">1</span> hongseokjun  staff   411B  <span class="m">3</span>  <span class="m">7</span> 00:35 id_rsa_work
 -rw-r--r--  <span class="m">1</span> hongseokjun  staff   102B  <span class="m">3</span>  <span class="m">7</span> 00:35 id_rsa_work.pub
--rw-------  <span class="m">1</span> hongseokjun  staff   411B  <span class="m">3</span>  <span class="m">7</span> 00:35 id_rsa_persnal
--rw-r--r--  <span class="m">1</span> hongseokjun  staff   102B  <span class="m">3</span>  <span class="m">7</span> 00:35 id_rsa_persnal.pub
+-rw-------  <span class="m">1</span> hongseokjun  staff   411B  <span class="m">3</span>  <span class="m">7</span> 00:35 id_rsa_personal
+-rw-r--r--  <span class="m">1</span> hongseokjun  staff   102B  <span class="m">3</span>  <span class="m">7</span> 00:35 id_rsa_perosnal.pub
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -172,7 +172,7 @@ $ ls
 <p><code>~/.ssh</code> 디렉토리로 이동 후 두 번째 명령어를 실행하고 <code>{key 이름 지정}</code> 부분에 원하는 key 이름을 입력해준다. (ex. id_rsa_work)</p>
 </li>
 <li>
-<p>위의 과정을 필요한 계정만큼 반복한다. (여기서는 두 개를 예로 듦.) 끝이나면 <code>id_rsa_work</code>, <code>id_rsa_work.pub</code>, <code>id_rsa_persnal</code>, <code>id_rsa_persnal.pub</code>라는 이름의 파일들이 생성된 것을 확인한다.</p>
+<p>위의 과정을 필요한 계정만큼 반복한다. (여기서는 두 개를 예로 듦.) 끝이나면 <code>id_rsa_work</code>, <code>id_rsa_work.pub</code>, <code>id_rsa_personal</code>, <code>id_rsa_personal.pub</code>라는 이름의 파일들이 생성된 것을 확인한다.</p>
 </li>
 </ul>
 <h2 id="2-ssh-agent에-ssh-key-등록">2. ssh-agent에 ssh-key 등록</h2>
@@ -183,7 +183,7 @@ $ ls
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ssh-add -K ~/.ssh/id_rsa_work
-$ ssh-add -K ~/.ssh/id_rsa_persnal
+$ ssh-add -K ~/.ssh/id_rsa_personal
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="3-github에-공개키-등록">3. GitHub에 공개키 등록</h2>
@@ -245,9 +245,9 @@ Host github.com-work
 	User work
 	IdentityFile ~/.ssh/id_rsa_work
 	
-Host github.com-persnal
+Host github.com-personal
 	HostName github.com
-	User persnal
+	User personal
 	IdentityFile ~/.ssh/id_rsa_persanl
 </code></pre></td></tr></table>
 </div>
@@ -350,7 +350,7 @@ ex. git remote set-url origin git@github.com-work:work/<span class="o">{</span>�
         </div>
     <div id="toc-final"></div>
     </article><div class=" post-tags post-tags-toc "><a href="/tags/git/" class="tag">Git</a></div></div></main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span>2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">hooong</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span>2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">hooong</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

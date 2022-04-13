@@ -3,7 +3,14 @@
         <title>All Posts - hooong&#39;s TIL</title>
         <link>https://hooong.github.io/posts/</link>
         <description>All Posts | hooong&#39;s TIL</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 10 Nov 2021 20:54:21 &#43;0900</lastBuildDate><atom:link href="https://hooong.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 13 Apr 2022 14:00:53 &#43;0900</lastBuildDate><atom:link href="https://hooong.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>[Python] Selenium을 사용해 매크로 만들기 기초</title>
+    <link>https://hooong.github.io/python_selenium/</link>
+    <pubDate>Wed, 13 Apr 2022 14:00:53 &#43;0900</pubDate>
+    <author>hooong</author>
+    <guid>https://hooong.github.io/python_selenium/</guid>
+    <description><![CDATA[Selenium이 무엇이고, 이를 이용해 간단하게 매크로 만들기에 대한 내용]]></description>
+</item><item>
     <title>[Python] a, b = b, a는 어떻게 동작하는걸까?</title>
     <link>https://hooong.github.io/python_multiple_assignment/</link>
     <pubDate>Wed, 10 Nov 2021 20:54:21 &#43;0900</pubDate>
@@ -66,12 +73,5 @@
     <author>hooong</author>
     <guid>https://hooong.github.io/%EB%8F%99%EC%9D%BC%ED%95%9C_%EB%A1%9C%EC%BB%AC_%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C_%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98_%EA%B9%83%ED%97%99_%EA%B3%84%EC%A0%95_%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94_%EB%B0%A9%EB%B2%95/</guid>
     <description><![CDATA[<p>하나의 맥북에서 두 개의 깃헙 계정을 사용하는 방법에 대한 정리</p>]]></description>
-</item><item>
-    <title>[Python]Docstring과Annotation</title>
-    <link>https://hooong.github.io/docstring%EA%B3%BC_annotation/</link>
-    <pubDate>Sat, 06 Mar 2021 21:50:13 &#43;0900</pubDate>
-    <author>hooong</author>
-    <guid>https://hooong.github.io/docstring%EA%B3%BC_annotation/</guid>
-    <description><![CDATA[<p>Python의 Docstring과 Annotation에 대한 정리</p>]]></description>
 </item></channel>
 </rss>
